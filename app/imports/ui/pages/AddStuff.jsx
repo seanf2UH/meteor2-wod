@@ -11,6 +11,7 @@ import { Stuffs } from '../../api/stuff/Stuff';
 const formSchema = new SimpleSchema({
   name: String,
   quantity: Number,
+  value: Number,
   condition: {
     type: String,
     allowedValues: ['excellent', 'good', 'fair', 'poor'],
@@ -25,10 +26,10 @@ const AddStuff = () => {
 
   // On submit, insert the data.
   const submit = (data, formRef) => {
-    const { name, quantity, condition } = data;
+    const { name, quantity, value, condition } = data;
     const owner = Meteor.user().username;
     Stuffs.collection.insert(
-      { name, quantity, condition, owner },
+      { name, quantity, value, condition, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -52,6 +53,7 @@ const AddStuff = () => {
               <Card.Body>
                 <TextField name="name" />
                 <NumField name="quantity" decimal={null} />
+                <NumField name="value" />
                 <SelectField name="condition" />
                 <SubmitField value="Submit" />
                 <ErrorsField />

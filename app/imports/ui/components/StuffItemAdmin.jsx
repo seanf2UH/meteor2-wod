@@ -6,6 +6,7 @@ const StuffItemAdmin = ({ stuff }) => (
   <tr>
     <td>{stuff.name}</td>
     <td>{stuff.quantity}</td>
+    <td>{stuff.value}</td>
     <td>{stuff.condition}</td>
     <td>{stuff.owner}</td>
   </tr>
@@ -16,6 +17,7 @@ StuffItemAdmin.propTypes = {
   stuff: PropTypes.shape({
     name: PropTypes.string,
     quantity: PropTypes.number,
+    value: PropTypes.number,
     condition: PropTypes.string,
     _id: PropTypes.string,
     owner: PropTypes.string,
